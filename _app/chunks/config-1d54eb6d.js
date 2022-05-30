@@ -1,0 +1,1 @@
+const t="Brandon Reid's Blog",o="Follow Brandon and his family as they travel and ponder",s="Brandon Reid",e=10,n=[{title:"Blog",route:"/blog"},{title:"Portfolio",route:"https://brandonreid.me/"}];export{s as a,o as b,n,e as p,t as s};

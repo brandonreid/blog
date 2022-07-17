@@ -2,13 +2,13 @@
 
 <script context="module">
   export const load = async ({ params }) => {
-    try {  
+    try {
       const post = await import(`../../lib/posts/${params.post}.md`)
 
       return {
         props: {
           PostContent: post.default,
-          meta: { ...post.metadata, slug: params.post } 
+          meta: { ...post.metadata, slug: params.post }
         }
       }
     } catch(error) {
@@ -23,6 +23,7 @@
 
 <script>
   import PostPhotos from '$lib/components/PostPhotos.svelte'
+  import {formatDateString} from '$lib/utilities/formatDate.js';
 
   export let PostContent
   export let meta
@@ -74,15 +75,15 @@
     />
 
     <h1>{ title }</h1>
-    
+
     <div class="meta">
-      <b>Published:</b> {date}
+      <b>Published:</b> {formatDateString(date)}
       <br>
-      <b>Updated:</b> {updated}
+      <b>Updated:</b> {formatDateString(updated)}
       <br>
       <b>Written from: <a href={locationMap} target="_blank">{latitude}, {longitude}</a></b>
     </div>
-    
+
     <svelte:component this={PostContent} />
   </div>
 

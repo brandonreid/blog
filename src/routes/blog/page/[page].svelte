@@ -15,13 +15,13 @@
           redirect: '/blog'
         }
       }
-      
+
       let offset = (page * postsPerPage) - postsPerPage
-    
+
       const totalPostsRes = await fetch('/api/posts/count.json')
       const { total } = await totalPostsRes.json()
       const { posts } = await fetchPosts({ offset, page })
-      
+
       return {
         status: 200,
         props: {
@@ -58,7 +58,7 @@
 	<meta data-key="description" name="description" content={siteDescription}>
 </svelte:head>
 
-<div class="container">
+<div class="main-height">
   <!-- TODO: this is duplicated in both `[page].svelte` files -->
   {#if posts.length}
     <h1>Posts {lowerBound}–{upperBound} of {totalPosts}</h1>

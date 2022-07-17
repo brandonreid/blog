@@ -3,8 +3,8 @@
 header,
 footer {
   font-family: var(--primaryFont);
-  padding: 2.5rem 2rem;
-  
+  padding: 2.5rem 2rem 1rem;
+
   a {
     text-decoration: none;
 
@@ -33,8 +33,6 @@ footer {
 }
 
 header {
-  background: var(--darker);
-  color: var(--paper);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,7 +87,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--darker);
+    background: var(--overlay);
     color: inherit;
     transition: all .25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 
@@ -121,7 +119,7 @@ header {
       top: 2rem;
       right: 2rem;
     }
-    
+
     ul li {
       font-size: 1.2rem;
       display: block;
@@ -144,7 +142,7 @@ header {
       ul {
         margin: 1rem auto 0;
         padding-top: 0.5rem;
-        border-top: 1px solid var(--lighterAccent);
+        border-top: 1px solid var(--text);
         width: max-content;
 
         li {
@@ -164,12 +162,15 @@ header {
 }
 
 footer {
-  background: var(--darker);
-  color: var(--paper);
+  width: 100%;
   display: grid;
   grid-template-columns: 100%;
   align-items: stretch;
   gap: 2rem;
+
+  &.container {
+    padding: 1rem 2rem 2.5rem;
+  }
 
   @media (min-width: vars.$smMin) {
     grid-template-columns: 1fr 1fr 2fr;
@@ -191,10 +192,6 @@ footer {
   nav {
     display: initial;
 
-    @media (min-width: vars.$smMin) {
-      border-right: 1px solid var(--dark);
-    }
-
     ul {
       display: initial;
 
@@ -208,18 +205,18 @@ footer {
 .skip-to-content-link {
   position: absolute;
   top: -6rem;
-  left: 0;
-  padding: .5em;
+  left: 0.25rem;
+  padding: .5em 1em;
   opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 3rem;
-  background: var(--darker);
-  color: var(--background);
+  background: var(--hole);
+  color: var(--text);
 
   &:focus {
-    transform: translateY(6rem);
+    transform: translateY(6.25rem);
     opacity: 1;
     z-index: 11;
   }

@@ -2,9 +2,9 @@
 <script context="module">
 	export const load = async({ url, fetch }) => {
     /**
-     * This fetch call is not used in this file, but the route won't be pre-rendered 
+     * This fetch call is not used in this file, but the route won't be pre-rendered
      * and routed properly unless it's called inside a `load` function. ¯\_(ツ)_/¯
-     * */ 
+     * */
     const rss = await fetch(`/api/rss.xml`)
 
     return {
@@ -24,15 +24,14 @@
 	import { prefetch } from '$app/navigation'
   import { onMount } from 'svelte'
   import { fade } from 'svelte/transition'
-import Callout from '$lib/components/Callout.svelte';
 
   const transitionIn = { delay: 150, duration: 150 }
   const transitionOut = { duration: 100 }
 
   export let path
-  
+
   /**
-   * Updates the global store with the current path. (Used for highlighting 
+   * Updates the global store with the current path. (Used for highlighting
    * the current page in the nav, but could be useful for other purposes.)
    **/
   $: currentPage.set(path)
@@ -40,7 +39,7 @@ import Callout from '$lib/components/Callout.svelte';
   /**
    * This pre-fetches all top-level routes on the site in the background for faster loading.
    * https://kit.svelte.dev/docs#modules-$app-navigation
-   * 
+   *
    * Any route added in src/lib/config.js will be prefetched automatically. You can add your
    * own prefetch() calls here, too.
    **/
@@ -50,7 +49,7 @@ import Callout from '$lib/components/Callout.svelte';
 </script>
 
 
-<!-- 
+<!--
   The below markup is used on every page in the site. The <slot> is where the page's
   actual contents will show up.
 -->

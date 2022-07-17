@@ -27,8 +27,8 @@
 	<meta data-key="description" name="description" content={siteDescription}>
 </svelte:head>
 
-<div class="container">
-	<h1>Blog</h1>
+<div class="main-height">
+	<h1 class="sr-only">Blog Posts</h1>
 
 	<PostsList {posts} />
 

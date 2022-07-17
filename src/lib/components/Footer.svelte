@@ -3,7 +3,7 @@
   import { siteAuthor } from '$lib/config'
 </script>
 
-<footer>
+<footer class="container">
   <MainNav />
 
   <nav>

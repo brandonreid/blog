@@ -4,7 +4,7 @@
 
 <style>
   .post-photos {
-    border: 4px solid var(--dark);
+    border: 4px solid var(--divider);
     margin: 5em 0;
     padding: 1em;
   }
@@ -48,7 +48,7 @@
 </style>
 
 <div class="post-photos">
-  <h2>And now, some photos from our recent travels.</h2> 
+  <h2>And now, some photos from our recent travels.</h2>
   <ul>
     {#each photos as photo}
       <li>

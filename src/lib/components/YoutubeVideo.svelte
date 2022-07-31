@@ -1,4 +1,5 @@
 <script>
+  // NOTE: Grab the link from the youtube embed. Must have `/embed/` in the URL
   export let src = "";
 </script>
 

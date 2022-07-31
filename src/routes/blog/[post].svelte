@@ -80,8 +80,6 @@
       <b>Published:</b> {formatDateString(date)}
       <br>
       <b>Updated:</b> {formatDateString(updated)}
-      <br>
-      <b>Written from: <a href={locationMap} target="_blank">{latitude}, {longitude}</a></b>
     </div>
 
     <svelte:component this={PostContent} />

@@ -1,4 +1,5 @@
 import { postsPerPage } from '$lib/config'
+import {getDate} from '$lib/utilities/formatDate.js';
 
 const fetchPosts = async ({ offset = 0, limit = postsPerPage, category = '' } = {}) => {
   const posts = await Promise.all(
@@ -9,8 +10,8 @@ const fetchPosts = async ({ offset = 0, limit = postsPerPage, category = '' } = 
     })
   )
 
-  let sortedPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date))
-  
+  let sortedPosts = posts.sort((a, b) => getDate(b.date) - getDate(a.date))
+
   if (category) {
     sortedPosts = sortedPosts.filter(post => post.categories.includes(category))
   }
@@ -18,7 +19,7 @@ const fetchPosts = async ({ offset = 0, limit = postsPerPage, category = '' } = 
   if (offset) {
     sortedPosts = sortedPosts.slice(offset)
   }
-  
+
   if (limit && limit < sortedPosts.length && limit != -1) {
     sortedPosts = sortedPosts.slice(0, limit)
   }
@@ -28,7 +29,7 @@ const fetchPosts = async ({ offset = 0, limit = postsPerPage, category = '' } = 
     slug: post.slug,
     excerpt: post.excerpt,
     coverImage: post.coverImage,
-    coverWidth: post.coverWidth, 
+    coverWidth: post.coverWidth,
     coverHeight: post.coverHeight,
     date: post.date,
     categories: post.categories,

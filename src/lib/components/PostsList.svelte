@@ -13,7 +13,7 @@
 <div class="post-list-wrapper">
   <ul class="posts-list">
     {#each posts as post, i}
-      <li style="padding-left: {i < posts.length - 1 ? `${numberOfDaysAfter(posts[i + 1].date, post.date) / 2}em` : '0px'}">
+      <li style="--pl-time-gap: {i < posts.length - 1 ? `${numberOfDaysAfter(posts[i + 1].date, post.date) / 2}em` : '0px'}">
         <article>
           <a class="post-link" href="/blog/{post.slug}">
             <div class="post-link_img-wrap">

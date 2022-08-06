@@ -2,17 +2,21 @@
 
 .post-list-wrapper {
   font-size: 1.2em;
-
   display: flex;
-  align-items: center;
-  direction: rtl;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  position: relative;
+  justify-content: center;
 
   @media (min-width: vars.$xsMin) {
     font-size: 1.5em;
+  }
+
+  @media (min-width: vars.$smMin) {
+    justify-content: flex-start;
+    align-items: center;
+    direction: rtl;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: relative;
   }
 
   @media (min-width: vars.$lgMin) {
@@ -22,29 +26,53 @@
 
 .posts-list {
   --size: 12em;
-  --timeline-item: var(--step);
+  --timeline-item-border: var(--step);
 
-  direction: ltr;
   list-style-type: none;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-start;
-  justify-content: center;
   margin: 0;
-  padding: 1em calc(50vw - (var(--size) / 2)) 1em 2em;
-  position: relative;
+  padding: 3em 0.5em;
+  max-width: 100%;
 
   li {
+    --timeline-item-time-gap: var(--pl-time-gap, 0px); // supplied from JS
+
     position: relative;
+    margin-bottom: var(--timeline-item-time-gap);
+
     &:before {
       content: ' ';
-      border-top: 6px dotted var(--timeline-item);
-      width: 100%;
-      height: 8px;
+      border-right: 6px dotted var(--timeline-item-border);
+      height: var(--timeline-item-time-gap);
+      width: 6px;
       position: absolute;
-      top: calc(var(--size) / 2 + 3px);
-      left: 0;
-      width: calc(100% - var(--size));
+      left: calc(100% / 2 - 3px);
+      top: 100%;
+    }
+  }
+
+  @media (min-width: vars.$smMin) {
+    direction: ltr;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1em calc(50vw - (var(--size) / 2)) 1em 2em;
+    position: relative;
+    max-width: initial;
+
+    li {
+      margin-bottom: 0;
+      padding-left: var(--timeline-item-time-gap);
+
+      &:before {
+        content: ' ';
+        border-top: 6px dotted var(--timeline-item-border);
+        width: calc(100% - var(--size));
+        height: 8px;
+        position: absolute;
+        top: calc(var(--size) / 2 + 3px);
+        left: 0;
+      }
     }
   }
 }
@@ -59,8 +87,9 @@
   z-index: 1;
 
   .post-link_img-wrap {
-    border: 6px solid var(--timeline-item);
+    border: 6px solid var(--timeline-item-border);
     border-radius: 50%;
+    max-width: 100%;
     width: var(--size);
     height: var(--size);
     overflow: hidden;
@@ -69,6 +98,7 @@
   }
   img {
     object-fit: cover;
+    max-width: 100%;
     width: var(--size);
     height: var(--size);
   }
@@ -78,6 +108,7 @@
     padding: 0.5em 0.25em;
     color: var(--text);
     text-align: center;
+    max-width: 100%;
     width: var(--size);
     margin-top: -2em;
     transition: transform 300ms ease;

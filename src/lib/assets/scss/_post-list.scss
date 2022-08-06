@@ -39,14 +39,14 @@
     position: relative;
     margin-bottom: var(--timeline-item-time-gap);
 
-    &:before {
+    &:not(:last-child):before {
       content: ' ';
       border-right: 6px dotted var(--timeline-item-border);
-      height: var(--timeline-item-time-gap);
+      height: calc(var(--timeline-item-time-gap) + var(--size));
       width: 6px;
       position: absolute;
       left: calc(100% / 2 - 3px);
-      top: 100%;
+      top: calc(100% - (var(--size) / 2));
     }
   }
 
@@ -64,7 +64,7 @@
       margin-bottom: 0;
       padding-left: var(--timeline-item-time-gap);
 
-      &:before {
+      &:not(:last-child):before {
         content: ' ';
         border-top: 6px dotted var(--timeline-item-border);
         width: calc(100% - var(--size));
